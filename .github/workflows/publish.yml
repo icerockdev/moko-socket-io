@@ -14,5 +14,7 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Publish plugin
+      - name: Cocoapods install
+        run: (cd sample/ios-app && pod install)
+      - name: Publish library
         run: ./gradlew -PlibraryPublish :socket-io:publishAllPublicationsToBintrayRepository -DBINTRAY_USER=${{ secrets.BINTRAY_USER }} -DBINTRAY_KEY=${{ secrets.BINTRAY_KEY }}
