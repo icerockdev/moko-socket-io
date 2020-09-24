@@ -1,1 +1,0 @@
-./gradlew -PlibraryPublish :socket-io:publishToMavenLocal $*

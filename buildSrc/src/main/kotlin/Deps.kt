@@ -3,52 +3,55 @@
  */
 
 object Deps {
+
+    private const val kotlinVersion = "1.4.0"
+    private const val detektVersion = "1.7.4"
+
+    private const val androidAppCompatVersion = "1.1.0"
+    private const val androidCoreTestingVersion = "2.1.0"
+
+    private const val androidSocketIoVersion = "1.0.0"
+    const val mokoSocketIoVersion = "0.2.0"
+    private const val kotlinxSerializationVersion = "0.20.0"
+
+    object Android {
+        const val compileSdk = 28
+        const val targetSdk = 28
+        const val minSdk = 16
+    }
+
     object Plugins {
-        val androidApplication = PluginDesc(id = "com.android.application")
-        val androidLibrary = PluginDesc(id = "com.android.library")
+        val androidApplication = GradlePlugin(id = "com.android.application")
+        val androidLibrary = GradlePlugin(id = "com.android.library")
 
-        val kotlinMultiplatform = PluginDesc(id = "org.jetbrains.kotlin.multiplatform")
-        val kotlinKapt = PluginDesc(id = "kotlin-kapt")
-        val kotlinAndroid = PluginDesc(id = "kotlin-android")
-        val kotlinAndroidExtensions = PluginDesc(id = "kotlin-android-extensions")
+        val kotlinMultiplatform = GradlePlugin(id = "org.jetbrains.kotlin.multiplatform")
+        val kotlinKapt = GradlePlugin(id = "kotlin-kapt")
+        val kotlinAndroid = GradlePlugin(id = "kotlin-android")
+        val kotlinAndroidExtensions = GradlePlugin(id = "kotlin-android-extensions")
 
-        val mobileMultiplatform = PluginDesc(id = "dev.icerock.mobile.multiplatform")
+        val mobileMultiplatform = GradlePlugin(id = "dev.icerock.mobile.multiplatform")
+        val mavenPublish = GradlePlugin(id = "org.gradle.maven-publish")
 
-        val detekt = PluginDesc(id = "io.gitlab.arturbosch.detekt", version = Versions.detekt)
+        val detekt = GradlePlugin(id = "io.gitlab.arturbosch.detekt", version = detektVersion)
+        val iosFramework = GradlePlugin(id = "dev.icerock.mobile.multiplatform.ios-framework")
     }
 
     object Libs {
         object Android {
-            val kotlinStdLib = AndroidLibrary(
-                name = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
-            )
-            val appCompat = AndroidLibrary(
-                name = "androidx.appcompat:appcompat:${Versions.Libs.Android.appCompat}"
-            )
-            val socketIo = AndroidLibrary(
-                name = "io.socket:socket.io-client:${Versions.Libs.Android.socketIo}"
-            )
+            const val appCompat = "androidx.appcompat:appcompat:$androidAppCompatVersion"
+
+            const val socketIo = "io.socket:socket.io-client:$androidSocketIoVersion"
         }
 
         object MultiPlatform {
-            val kotlinStdLib = MultiPlatformLibrary(
-                android = Android.kotlinStdLib.name,
-                common = "org.jetbrains.kotlin:kotlin-stdlib-common:${Versions.kotlin}"
-            )
-            val serialization = MultiPlatformLibrary(
-                android = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:${Versions.Libs.MultiPlatform.serialization}",
-                common = "org.jetbrains.kotlinx:kotlinx-serialization-runtime-common:${Versions.Libs.MultiPlatform.serialization}",
-                ios = "org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:${Versions.Libs.MultiPlatform.serialization}"
-            )
-            val mokoSocketIo = MultiPlatformLibrary(
-                common = "dev.icerock.moko:socket-io:${Versions.Libs.MultiPlatform.mokoSocketIo}",
-                iosX64 = "dev.icerock.moko:socket-io-iosx64:${Versions.Libs.MultiPlatform.mokoSocketIo}",
-                iosArm64 = "dev.icerock.moko:socket-io-iosarm64:${Versions.Libs.MultiPlatform.mokoSocketIo}"
-            )
+
+            const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlinxSerializationVersion"
+            const val mokoSocketIo = "dev.icerock.moko:socket-io:$mokoSocketIoVersion"
         }
 
         object Jvm {
-            const val detektFormatting = "io.gitlab.arturbosch.detekt:detekt-formatting:${Versions.detekt}"
+            const val detektFormatting =
+                "io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion"
         }
     }
 }

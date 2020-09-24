@@ -8,8 +8,6 @@ plugins {
 
 buildscript {
     repositories {
-        mavenLocal()
-
         jcenter()
         google()
 
@@ -19,22 +17,16 @@ buildscript {
         maven { url = uri("https://dl.bintray.com/icerockdev/plugins") }
     }
     dependencies {
-        with(Deps.Plugins) {
-            listOf(
-                androidApplication,
-                androidLibrary,
-                kotlinMultiplatform,
-                kotlinKapt,
-                kotlinAndroid
-            )
-        }.let { plugins(it) }
+        plugin(Deps.Plugins.androidApplication)
+        plugin(Deps.Plugins.androidLibrary)
+        plugin(Deps.Plugins.kotlinMultiplatform)
+        plugin(Deps.Plugins.kotlinKapt)
+        plugin(Deps.Plugins.kotlinAndroid)
     }
 }
 
 allprojects {
     repositories {
-        mavenLocal()
-
         google()
         jcenter()
 
@@ -46,12 +38,22 @@ allprojects {
     apply(plugin = Deps.Plugins.detekt.id)
 
     configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
-        toolVersion = Versions.detekt
         input.setFrom("src/commonMain/kotlin", "src/androidMain/kotlin", "src/iosMain/kotlin")
     }
 
     dependencies {
         "detektPlugins"(Deps.Libs.Jvm.detektFormatting)
+    }
+
+    plugins.withId(Deps.Plugins.androidLibrary.id) {
+        configure<com.android.build.gradle.LibraryExtension> {
+            compileSdkVersion(Deps.Android.compileSdk)
+
+            defaultConfig {
+                minSdkVersion(Deps.Android.minSdk)
+                targetSdkVersion(Deps.Android.targetSdk)
+            }
+        }
     }
 
 }
