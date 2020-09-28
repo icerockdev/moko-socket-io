@@ -12,7 +12,7 @@ object Deps {
 
     private const val androidSocketIoVersion = "1.0.0"
     const val mokoSocketIoVersion = "0.2.0"
-    private const val kotlinxSerializationVersion = "0.20.0"
+    private const val kotlinxSerializationVersion = "1.0.0-RC"
 
     object Android {
         const val compileSdk = 28
@@ -45,7 +45,7 @@ object Deps {
 
         object MultiPlatform {
 
-            const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$kotlinxSerializationVersion"
+            const val serialization = "org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinxSerializationVersion"
             const val mokoSocketIo = "dev.icerock.moko:socket-io:$mokoSocketIoVersion"
         }
 
