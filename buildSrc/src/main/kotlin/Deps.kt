@@ -8,8 +8,6 @@ object Deps {
     private const val detektVersion = "1.7.4"
 
     private const val androidAppCompatVersion = "1.1.0"
-    private const val androidCoreTestingVersion = "2.1.0"
-
     private const val androidSocketIoVersion = "1.0.0"
     private const val kotlinxSerializationVersion = "1.0.0-RC"
 
@@ -27,7 +25,6 @@ object Deps {
         val androidLibrary = GradlePlugin(id = "com.android.library")
 
         val kotlinMultiplatform = GradlePlugin(id = "org.jetbrains.kotlin.multiplatform")
-        val kotlinKapt = GradlePlugin(id = "kotlin-kapt")
         val kotlinAndroid = GradlePlugin(id = "kotlin-android")
         val kotlinAndroidExtensions = GradlePlugin(id = "kotlin-android-extensions")
 
