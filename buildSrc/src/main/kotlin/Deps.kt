@@ -11,8 +11,10 @@ object Deps {
     private const val androidCoreTestingVersion = "2.1.0"
 
     private const val androidSocketIoVersion = "1.0.0"
-    const val mokoSocketIoVersion = "0.2.0"
     private const val kotlinxSerializationVersion = "1.0.0-RC"
+
+    const val mokoSocketIoVersion = "0.2.0"
+
 
     object Android {
         const val compileSdk = 28

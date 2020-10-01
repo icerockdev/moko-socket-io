@@ -6,25 +6,6 @@ plugins {
     plugin(Deps.Plugins.detekt) apply false
 }
 
-buildscript {
-    repositories {
-        jcenter()
-        google()
-
-        maven { url = uri("https://dl.bintray.com/kotlin/kotlin") }
-        maven { url = uri("https://kotlin.bintray.com/kotlinx") }
-        maven { url = uri("https://plugins.gradle.org/m2/") }
-        maven { url = uri("https://dl.bintray.com/icerockdev/plugins") }
-    }
-    dependencies {
-        plugin(Deps.Plugins.androidApplication)
-        plugin(Deps.Plugins.androidLibrary)
-        plugin(Deps.Plugins.kotlinMultiplatform)
-        plugin(Deps.Plugins.kotlinKapt)
-        plugin(Deps.Plugins.kotlinAndroid)
-    }
-}
-
 allprojects {
     repositories {
         google()
