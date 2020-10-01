@@ -21,7 +21,7 @@ android {
         applicationId = "dev.icerock.moko.samples.socketio"
 
         versionCode = 1
-        versionName = "0.1.0"
+        versionName = "0.2.0"
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
