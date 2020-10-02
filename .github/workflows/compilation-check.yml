@@ -19,4 +19,4 @@ jobs:
     - name: Cocoapods install
       run: (cd sample/ios-app && pod install)
     - name: Check library
-      run: ./gradlew -PlibraryPublish detekt :socket-io:build
+      run: ./gradlew build publishToMavenLocal

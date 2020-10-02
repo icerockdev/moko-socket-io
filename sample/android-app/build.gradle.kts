@@ -3,25 +3,25 @@
  */
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
+    plugin(Deps.Plugins.androidApplication)
+    plugin(Deps.Plugins.kotlinAndroid)
 }
 
 android {
-    compileSdkVersion(Versions.Android.compileSdk)
+    compileSdkVersion(Deps.Android.compileSdk)
 
     dexOptions {
         javaMaxHeapSize = "2g"
     }
 
     defaultConfig {
-        minSdkVersion(Versions.Android.minSdk)
-        targetSdkVersion(Versions.Android.targetSdk)
+        minSdkVersion(Deps.Android.minSdk)
+        targetSdkVersion(Deps.Android.targetSdk)
 
         applicationId = "dev.icerock.moko.samples.socketio"
 
         versionCode = 1
-        versionName = "0.1.0"
+        versionName = "0.2.0"
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -44,9 +44,8 @@ android {
 }
 
 dependencies {
-    implementation(Deps.Libs.Android.kotlinStdLib.name)
 
-    implementation(Deps.Libs.Android.appCompat.name)
+    implementation(Deps.Libs.Android.appCompat)
 
     implementation(project("${parent!!.path}:mpp-library"))
 }
