@@ -1,8 +1,8 @@
 ![moko-socket-io](https://user-images.githubusercontent.com/5010169/80988267-712b7e80-8e5d-11ea-955e-c788a567c64e.png)  
 [![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://api.bintray.com/packages/icerockdev/moko/moko-socket-io/images/download.svg) ](https://bintray.com/icerockdev/moko/moko-socket-io/_latestVersion) ![kotlin-version](https://img.shields.io/badge/kotlin-1.4.10-orange)
 
-# Mobile Kotlin resources
-This is a Kotlin MultiPlatform library that provides access to the resources on iOS & Android with the support of the default system localization.
+# Mobile Kotlin socket io
+This is a Kotlin MultiPlatform library that provides real-time, event-based communication for iOS and Android.
 
 ## Table of Contents
 - [Features](#features)
