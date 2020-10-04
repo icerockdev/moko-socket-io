@@ -1,8 +1,8 @@
 ![moko-socket-io](https://user-images.githubusercontent.com/5010169/80988267-712b7e80-8e5d-11ea-955e-c788a567c64e.png)  
-[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://api.bintray.com/packages/icerockdev/moko/moko-socket-io/images/download.svg) ](https://bintray.com/icerockdev/moko/moko-socket-io/_latestVersion) ![kotlin-version](https://img.shields.io/badge/kotlin-1.3.72-orange)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://api.bintray.com/packages/icerockdev/moko/moko-socket-io/images/download.svg) ](https://bintray.com/icerockdev/moko/moko-socket-io/_latestVersion) ![kotlin-version](https://img.shields.io/badge/kotlin-1.4.10-orange)
 
-# Mobile Kotlin resources
-This is a Kotlin MultiPlatform library that provides access to the resources on iOS & Android with the support of the default system localization.
+# Mobile Kotlin socket io
+This is a Kotlin MultiPlatform library that provides real-time, event-based communication for iOS and Android.
 
 ## Table of Contents
 - [Features](#features)
@@ -19,13 +19,15 @@ This is a Kotlin MultiPlatform library that provides access to the resources on 
 - **Socket.IO in common code** - actual implementations is [socket.io-client-java](https://github.com/socketio/socket.io-client-java) and [socket.io-client-swift](https://github.com/socketio/socket.io-client-swift);
 
 ## Requirements
-- Gradle version 5.6.4+
+- Gradle version 6.0+
 - Android API 16+
 - iOS version 9.0+
 
 ## Versions
 - kotlin 1.3.72
   - 0.1.0
+- kotlin 1.4.10
+  - 0.2.0
 
 ## Installation
 root build.gradle  
@@ -40,8 +42,8 @@ allprojects {
 project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:socket-io:0.1.0")
-    commonMainApi("org.jetbrains.kotlinx:kotlinx-serialization-runtime-native:0.20.0")
+    commonMainApi("dev.icerock.moko:socket-io:0.2.0")
+    commonMainApi("org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.0-RC")
 }
 
 cocoaPods {
@@ -53,7 +55,7 @@ cocoaPods {
 
 Podfile
 ```ruby
-pod 'mokoSocketIo', :git => 'https://github.com/icerockdev/moko-socket-io.git', :tag => 'release/0.1.0'
+pod 'mokoSocketIo', :git => 'https://github.com/icerockdev/moko-socket-io.git', :tag => 'release/0.2.0'
 ```
 
 ## Usage
@@ -113,7 +115,6 @@ Please see more examples in the [sample directory](sample).
 ## Set Up Locally 
 - The [socket-io directory](socket-io) contains the `socket-io` library;
 - The [sample directory](sample) contains sample apps for Android and iOS; plus the mpp-library connected to the apps;
-- For local testing a use the `./publishToMavenLocal.sh` script - so that sample apps use the locally published version.
 
 ## Contributing
 All development (both new features and bug fixes) is performed in the `develop` branch. This way `master` always contains the sources of the most recently released version. Please send PRs with bug fixes to the `develop` branch. Documentation fixes in the markdown files are an exception to this rule. They are updated directly in `master`.

@@ -3,26 +3,19 @@
  */
 
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.multiplatform")
-    id("dev.icerock.mobile.multiplatform")
+    plugin(Deps.Plugins.androidLibrary)
+    plugin(Deps.Plugins.kotlinMultiplatform)
+    plugin(Deps.Plugins.mobileMultiplatform)
+    plugin(Deps.Plugins.iosFramework)
 }
-
-android {
-    compileSdkVersion(Versions.Android.compileSdk)
-
-    defaultConfig {
-        minSdkVersion(Versions.Android.minSdk)
-        targetSdkVersion(Versions.Android.targetSdk)
-    }
-}
-
-setupFramework(exports = emptyList())
 
 dependencies {
-    mppLibrary(Deps.Libs.MultiPlatform.kotlinStdLib)
-    mppLibrary(Deps.Libs.MultiPlatform.serialization)
-    mppLibrary(Deps.Libs.MultiPlatform.mokoSocketIo)
+    commonMainImplementation(Deps.Libs.MultiPlatform.serialization)
+    commonMainApi(Deps.Libs.MultiPlatform.mokoSocketIo)
+}
+
+framework {
+    export(project(":socket-io"))
 }
 
 cocoaPods {

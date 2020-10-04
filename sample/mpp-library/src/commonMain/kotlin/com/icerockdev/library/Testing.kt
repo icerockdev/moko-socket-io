@@ -10,7 +10,7 @@ import dev.icerock.moko.socket.SocketOptions
 
 class Testing {
     val socket = Socket(
-        endpoint = "wss://socketio-chat-h9jt.herokuapp.com",
+        endpoint = "https://socketio-chat-h9jt.herokuapp.com",
         config = SocketOptions(
             queryParams = null,
             transport = SocketOptions.Transport.WEBSOCKET

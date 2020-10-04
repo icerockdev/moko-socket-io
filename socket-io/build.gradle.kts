@@ -7,27 +7,17 @@ plugins {
     plugin(Deps.Plugins.kotlinMultiplatform)
     plugin(Deps.Plugins.kotlinAndroidExtensions)
     plugin(Deps.Plugins.mobileMultiplatform)
-    id("maven-publish")
+    plugin(Deps.Plugins.mavenPublish)
 }
 
 group = "dev.icerock.moko"
-version = Versions.Libs.MultiPlatform.mokoSocketIo
-
-android {
-    compileSdkVersion(Versions.Android.compileSdk)
-
-    defaultConfig {
-        minSdkVersion(Versions.Android.minSdk)
-        targetSdkVersion(Versions.Android.targetSdk)
-    }
-}
+version = Deps.mokoSocketIoVersion
 
 dependencies {
-    mppLibrary(Deps.Libs.MultiPlatform.kotlinStdLib)
-    mppLibrary(Deps.Libs.MultiPlatform.serialization)
+    commonMainImplementation(Deps.Libs.MultiPlatform.serialization)
 
-    androidLibrary(Deps.Libs.Android.appCompat)
-    androidMainImplementation(Deps.Libs.Android.socketIo.name) {
+    androidMainImplementation(Deps.Libs.Android.appCompat)
+    androidMainImplementation(Deps.Libs.Android.socketIo) {
         exclude(group = "org.json", module = "json")
     }
 }
