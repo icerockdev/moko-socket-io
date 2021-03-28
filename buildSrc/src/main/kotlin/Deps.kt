@@ -4,14 +4,14 @@
 
 object Deps {
 
-    private const val kotlinVersion = "1.4.0"
+    private const val kotlinVersion = "1.4.31"
     private const val detektVersion = "1.7.4"
 
     private const val androidAppCompatVersion = "1.1.0"
     private const val androidSocketIoVersion = "1.0.0"
     private const val kotlinxSerializationVersion = "1.0.0-RC"
 
-    const val mokoSocketIoVersion = "0.2.0"
+    const val mokoSocketIoVersion = "0.2.1"
 
 
     object Android {
@@ -30,6 +30,7 @@ object Deps {
 
         val mobileMultiplatform = GradlePlugin(id = "dev.icerock.mobile.multiplatform")
         val mavenPublish = GradlePlugin(id = "org.gradle.maven-publish")
+        val signing = GradlePlugin(id = "signing")
 
         val detekt = GradlePlugin(id = "io.gitlab.arturbosch.detekt", version = detektVersion)
         val iosFramework = GradlePlugin(id = "dev.icerock.mobile.multiplatform.ios-framework")
