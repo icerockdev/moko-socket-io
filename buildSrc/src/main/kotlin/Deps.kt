@@ -5,7 +5,7 @@
 object Deps {
 
     private const val kotlinVersion = "1.4.31"
-    private const val detektVersion = "1.7.4"
+    private const val detektVersion = "1.15.0"
 
     private const val androidAppCompatVersion = "1.1.0"
     private const val androidSocketIoVersion = "1.0.0"
