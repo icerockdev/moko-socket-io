@@ -13,7 +13,9 @@ allprojects {
 
         jcenter {
             content {
-                includeGroup("org.jetbrains.trove4j", "org.jetbrains.kotlinx", "kotlinx-html-jvm")
+                includeGroup("org.jetbrains.trove4j")
+                includeGroup("org.jetbrains.kotlinx")
+                includeGroup("kotlinx-html-jvm")
             }
         }
     }
