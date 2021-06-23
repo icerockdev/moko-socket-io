@@ -40,9 +40,17 @@ kotlin {
 
 dependencies {
     commonMainImplementation(libs.serialization)
-    "commonJvmImplementation"(libs.appCompat)
-    "commonJvmImplementation"(libs.socketIo) {
-        exclude(group = "org.json", module = "json")
+//    "commonJvmImplementation"(libs.appCompat)
+//    "commonJvmImplementation"(libs.socketIo) {
+//        exclude(group = "org.json", module = "json")
+//    }
+}
+
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.name == "socket.io-client") {
+            exclude(group = "org.json", module = "json")
+        }
     }
 }
 
