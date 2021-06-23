@@ -25,10 +25,6 @@ kotlin {
 
         val commonJvm = create("commonJvm") {
             dependsOn(commonMain)
-            dependencies {
-                implementation(libs.appCompat)
-                implementation(libs.socketIo)
-            }
         }
 
         val androidMain by getting {
@@ -44,13 +40,9 @@ kotlin {
 
 dependencies {
     commonMainImplementation(libs.serialization)
-}
-
-configurations.all {
-    resolutionStrategy.eachDependency {
-        if (requested.name == "socket.io-client") {
-            exclude(group = "org.json", module = "json")
-        }
+    "commonJvmImplementation"(libs.appCompat)
+    "commonJvmImplementation"(libs.socketIo) {
+        exclude(group = "org.json", module = "json")
     }
 }
 
