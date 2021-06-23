@@ -17,12 +17,40 @@ plugins {
 group = "dev.icerock.moko"
 version = libs.versions.mokoSocketIoVersion.get()
 
+kotlin {
+    jvm()
+
+    sourceSets {
+        val commonMain by getting
+
+        val commonJvm = create("commonJvm") {
+            dependsOn(commonMain)
+            dependencies {
+                implementation(libs.appCompat)
+                implementation(libs.socketIo)
+            }
+        }
+
+        val androidMain by getting {
+            dependsOn(commonJvm)
+        }
+
+        val jvmMain by getting {
+            dependsOn(commonJvm)
+        }
+
+    }
+}
+
 dependencies {
     commonMainImplementation(libs.serialization)
+}
 
-    androidMainImplementation(libs.appCompat)
-    androidMainImplementation(libs.socketIo) {
-        exclude(group = "org.json", module = "json")
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.name == "socket.io-client") {
+            exclude(group = "org.json", module = "json")
+        }
     }
 }
 
