@@ -25,6 +25,10 @@ kotlin {
 
         val commonJvm = create("commonJvm") {
             dependsOn(commonMain)
+            dependencies{
+                implementation(libs.appCompat)
+                implementation(libs.socketIo)
+            }
         }
 
         val androidMain by getting {
