@@ -3,20 +3,17 @@
  */
 
 plugins {
-    plugin(Deps.Plugins.androidLibrary)
-    plugin(Deps.Plugins.kotlinMultiplatform)
-    plugin(Deps.Plugins.mobileMultiplatform)
-    plugin(Deps.Plugins.iosFramework)
+    id("com.android.library")
+    id("org.jetbrains.kotlin.multiplatform")
+    id("dev.icerock.mobile.multiplatform")
+    id("dev.icerock.mobile.multiplatform.ios-framework")
 }
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.serialization)
-    commonMainApi(Deps.Libs.MultiPlatform.mokoSocketIo)
+    commonMainImplementation(libs.serialization)
+    commonMainApi(projects.socketIo)
 }
 
-framework {
-    export(project(":socket-io"))
-}
 
 cocoaPods {
     podsProject = file("../ios-app/Pods/Pods.xcodeproj")

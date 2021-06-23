@@ -6,24 +6,45 @@ import java.util.Base64
 import kotlin.text.String
 
 plugins {
-    plugin(Deps.Plugins.androidLibrary)
-    plugin(Deps.Plugins.kotlinMultiplatform)
-    plugin(Deps.Plugins.kotlinAndroidExtensions)
-    plugin(Deps.Plugins.mobileMultiplatform)
-    plugin(Deps.Plugins.mavenPublish)
-    plugin(Deps.Plugins.signing)
+    id("com.android.library")
+    id("org.jetbrains.kotlin.multiplatform")
+    id("kotlin-android-extensions")
+    id("dev.icerock.mobile.multiplatform")
+    id("org.gradle.maven-publish")
+    id("signing")
 }
 
 group = "dev.icerock.moko"
-version = Deps.mokoSocketIoVersion
+version = libs.versions.mokoSocketIoVersion.get()
+
+kotlin {
+    jvm()
+
+    sourceSets {
+        val commonMain by getting
+
+        val commonJvm = create("commonJvm") {
+            dependsOn(commonMain)
+        }
+
+        val androidMain by getting {
+            dependsOn(commonJvm)
+        }
+
+        val jvmMain by getting {
+            dependsOn(commonJvm)
+        }
+
+    }
+}
 
 dependencies {
-    commonMainImplementation(Deps.Libs.MultiPlatform.serialization)
-
-    androidMainImplementation(Deps.Libs.Android.appCompat)
-    androidMainImplementation(Deps.Libs.Android.socketIo) {
+    commonMainImplementation(libs.serialization)
+    androidMainImplementation(libs.appCompat)
+    "commonJvmImplementation"(libs.socketIo) {
         exclude(group = "org.json", module = "json")
     }
+    "jvmMainImplementation"(libs.socketIo)
 }
 
 val javadocJar by tasks.registering(Jar::class) {
