@@ -2,16 +2,20 @@
  * Copyright 2020 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
-plugins {
-    id("io.gitlab.arturbosch.detekt") version("1.15.0") apply(false)
-}
-
 buildscript {
+    repositories {
+        mavenCentral()
+        google()
+
+        gradlePluginPortal()
+    }
+
     dependencies {
+        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.15.0")
         classpath("dev.icerock.moko:resources-generator:0.15.1")
 
-        classpath("dev.icerock:mobile-multiplatform:0.10.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.10")
+        classpath("dev.icerock:mobile-multiplatform:0.11.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
         classpath("com.android.tools.build:gradle:4.2.1")
     }
 }

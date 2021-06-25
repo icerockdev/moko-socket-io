@@ -1,5 +1,5 @@
 [versions]
-kotlinVersion = "1.5.10"
+kotlinVersion = "1.5.20"
 detektVersion = "1.15.0"
 androidAppCompatVersion = "1.2.0"
 androidSocketIoVersion = "1.0.0"

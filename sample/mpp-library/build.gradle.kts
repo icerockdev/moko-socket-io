@@ -14,6 +14,9 @@ dependencies {
     commonMainApi(projects.socketIo)
 }
 
+framework {
+    export(project(":socket-io"))
+}
 
 cocoaPods {
     podsProject = file("../ios-app/Pods/Pods.xcodeproj")
