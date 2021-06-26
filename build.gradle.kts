@@ -2,44 +2,42 @@
  * Copyright 2020 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
-plugins {
-    plugin(Deps.Plugins.detekt) apply false
-}
-
-allprojects {
+buildscript {
     repositories {
         mavenCentral()
         google()
 
-        jcenter {
-            content {
-                includeGroup("org.jetbrains.trove4j")
-                includeGroup("org.jetbrains.kotlinx")
-            }
-        }
+        gradlePluginPortal()
     }
+    dependencies {
+        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.15.0")
+        classpath("dev.icerock:mobile-multiplatform:0.12.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
+        classpath("com.android.tools.build:gradle:4.2.1")
+    }
+}
 
-    apply(plugin = Deps.Plugins.detekt.id)
+allprojects {
+    apply(plugin = "io.gitlab.arturbosch.detekt")
 
     configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
-        input.setFrom("src/commonMain/kotlin", "src/androidMain/kotlin", "src/iosMain/kotlin")
+        input.setFrom("src/commonMain/kotlin", "src/androidMain/kotlin", "src/iosMain/kotlin", "src/commonJvm/kotlin")
     }
 
     dependencies {
-        "detektPlugins"(Deps.Libs.Jvm.detektFormatting)
+        "detektPlugins"(rootProject.libs.detektFormatting)
     }
 
-    plugins.withId(Deps.Plugins.androidLibrary.id) {
+    plugins.withId("com.android.library") {
         configure<com.android.build.gradle.LibraryExtension> {
-            compileSdkVersion(Deps.Android.compileSdk)
+            compileSdkVersion(libs.versions.compileSdk.get().toInt())
 
             defaultConfig {
-                minSdkVersion(Deps.Android.minSdk)
-                targetSdkVersion(Deps.Android.targetSdk)
+                minSdkVersion(libs.versions.minSdk.get().toInt())
+                targetSdkVersion(libs.versions.targetSdk.get().toInt())
             }
         }
     }
-
 }
 
 tasks.register("clean", Delete::class).configure {

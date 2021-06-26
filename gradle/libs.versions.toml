@@ -1,0 +1,17 @@
+[versions]
+detektVersion = "1.15.0"
+androidAppCompatVersion = "1.2.0"
+androidSocketIoVersion = "1.0.0"
+kotlinxSerializationVersion = "1.2.1"
+mokoSocketIoVersion = "0.3.0"
+compileSdk = "28"
+targetSdk = "28"
+minSdk = "16"
+
+[libraries]
+appCompat = { module = "androidx.appcompat:appcompat", version.ref = "androidAppCompatVersion" }
+socketIo = { module = "io.socket:socket.io-client", version.ref = "androidSocketIoVersion" }
+serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationVersion" }
+mokoSocketIo = { module = "dev.icerock.moko:socket-io", version.ref = "mokoSocketIoVersion" }
+detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detektVersion" }
+

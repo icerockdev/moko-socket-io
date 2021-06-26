@@ -251,6 +251,7 @@
 				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -262,6 +263,7 @@
 				CURRENT_PROJECT_VERSION = 0;
 				DEFINES_MODULE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				ONLY_ACTIVE_ARCH = YES;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -275,7 +277,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RF9T8S9829;
 				INFOPLIST_FILE = src/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.icerock.moko.sample.resources-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.icerock.moko.sample.socket-io-test";
 				PRODUCT_NAME = mokoSampleResources;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -293,7 +295,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = RF9T8S9829;
 				INFOPLIST_FILE = src/Info.plist;
-				PRODUCT_BUNDLE_IDENTIFIER = "dev.icerock.moko.sample.resources-test";
+				PRODUCT_BUNDLE_IDENTIFIER = "dev.icerock.moko.sample.socket-io-test";
 				PRODUCT_NAME = mokoSampleResources;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
