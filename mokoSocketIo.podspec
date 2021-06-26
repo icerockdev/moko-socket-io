@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'mokoSocketIo'
-    spec.version                  = '0.2.0'
+    spec.version                  = '0.3.0'
     spec.homepage                 = 'https://github.com/icerockdev/moko-socket-io'
     spec.source                   = { :git => "https://github.com/icerockdev/moko-socket-io.git", :tag => "release/#{spec.version}" }
     spec.authors                  = 'IceRock Development'

@@ -5,8 +5,14 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.multiplatform")
-    id("dev.icerock.mobile.multiplatform")
+    id("dev.icerock.mobile.multiplatform.cocoapods")
+    id("dev.icerock.mobile.multiplatform.android-manifest")
     id("dev.icerock.mobile.multiplatform.ios-framework")
+}
+
+kotlin {
+    android()
+    ios()
 }
 
 dependencies {
@@ -14,9 +20,10 @@ dependencies {
     commonMainApi(projects.socketIo)
 }
 
+framework {
+    export(projects.socketIo)
+}
 
 cocoaPods {
-    podsProject = file("../ios-app/Pods/Pods.xcodeproj")
-
     pod("mokoSocketIo", onlyLink = true)
 }

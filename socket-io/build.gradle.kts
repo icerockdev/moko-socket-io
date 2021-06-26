@@ -8,8 +8,9 @@ import kotlin.text.String
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.multiplatform")
-    id("kotlin-android-extensions")
-    id("dev.icerock.mobile.multiplatform")
+    id("kotlin-parcelize")
+    id("dev.icerock.mobile.multiplatform.cocoapods")
+    id("dev.icerock.mobile.multiplatform.android-manifest")
     id("org.gradle.maven-publish")
     id("signing")
 }
@@ -18,6 +19,10 @@ group = "dev.icerock.moko"
 version = libs.versions.mokoSocketIoVersion.get()
 
 kotlin {
+    android {
+        publishLibraryVariants("release", "debug")
+    }
+    ios()
     jvm()
 
     sourceSets {
@@ -34,13 +39,12 @@ kotlin {
         val jvmMain by getting {
             dependsOn(commonJvm)
         }
-
     }
 }
 
 dependencies {
     commonMainImplementation(libs.serialization)
-    androidMainImplementation(libs.appCompat)
+    "androidMainImplementation"(libs.appCompat)
     "commonJvmImplementation"(libs.socketIo) {
         exclude(group = "org.json", module = "json")
     }
@@ -72,7 +76,9 @@ publishing {
             url.set("https://github.com/icerockdev/moko-socket-io")
             licenses {
                 license {
+                    name.set("Apache-2.0")
                     url.set("https://github.com/icerockdev/moko-socket-io/blob/master/LICENSE.md")
+                    distribution.set("repo")
                 }
             }
 
@@ -84,7 +90,7 @@ publishing {
                 }
                 developer {
                     id.set("Dorofeev")
-                    name.set("Andrey Dorofeef")
+                    name.set("Andrey Dorofeev")
                     email.set("adorofeev@icerockdev.com")
                 }
             }
@@ -111,7 +117,5 @@ publishing {
 }
 
 cocoaPods {
-    podsProject = file("../sample/ios-app/Pods/Pods.xcodeproj")
-
     pod("mokoSocketIo")
 }

@@ -19,9 +19,9 @@ This is a Kotlin MultiPlatform library that provides real-time, event-based comm
 - **Socket.IO in common code** - actual implementations is [socket.io-client-java](https://github.com/socketio/socket.io-client-java) and [socket.io-client-swift](https://github.com/socketio/socket.io-client-swift);
 
 ## Requirements
-- Gradle version 6.0+
+- Gradle version 6.8+
 - Android API 16+
-- iOS version 9.0+
+- iOS version 11.0+
 
 ## Installation
 root build.gradle  
