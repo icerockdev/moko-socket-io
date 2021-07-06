@@ -19,7 +19,7 @@ jobs:
     - name: Cocoapods install
       run: (cd sample/ios-app && pod install)
     - name: Check library
-      run: ./gradlew build publishToMavenLocal
+      run: ./gradlew build publishToMavenLocal syncMultiPlatformLibraryDebugFrameworkIosX64
     - name: Install pods
       run: cd sample/ios-app && pod install
     - name: build ios sample
