@@ -36,8 +36,7 @@ allprojects {
 ### project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:socket-io:0.3.0")
-    commonMainApi("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+    commonMainApi("dev.icerock.moko:socket-io:0.4.0")
 }
 ```
 
@@ -60,7 +59,7 @@ kotlin {
         // add native dependency
         pod(name = "mokoSocketIo") {
             source = git(url = "https://github.com/icerockdev/moko-socket-io.git") {
-                tag = "release/0.3.0"
+                tag = "release/0.4.0"
             }
         }
     }
@@ -85,7 +84,7 @@ cocoaPods {
 
 Podfile
 ```ruby
-pod 'mokoSocketIo', :git => 'https://github.com/icerockdev/moko-socket-io.git', :tag => 'release/0.3.0'
+pod 'mokoSocketIo', :git => 'https://github.com/icerockdev/moko-socket-io.git', :tag => 'release/0.4.0'
 ```
 
 ## Usage
