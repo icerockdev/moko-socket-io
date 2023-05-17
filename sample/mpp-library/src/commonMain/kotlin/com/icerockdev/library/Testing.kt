@@ -12,7 +12,7 @@ class Testing {
     val socket = Socket(
         endpoint = "https://socketio-chat-h9jt.herokuapp.com",
         config = SocketOptions(
-            queryParams = null,
+            queryParams = mapOf("param1" to "1", "param2" to "2"),
             transport = SocketOptions.Transport.WEBSOCKET
         )
     ) {
