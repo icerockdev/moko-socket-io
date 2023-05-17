@@ -1,5 +1,5 @@
 ![moko-socket-io](https://user-images.githubusercontent.com/5010169/80988267-712b7e80-8e5d-11ea-955e-c788a567c64e.png)  
-[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://img.shields.io/maven-central/v/dev.icerock.moko/socket-io) ](https://repo1.maven.org/maven2/dev/icerock/moko/socket-io)![kotlin-version](https://kotlin-version.aws.icerock.dev/kotlin-version?group=dev.icerock.moko&name=socket-io)
+[![GitHub license](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg?style=flat)](http://www.apache.org/licenses/LICENSE-2.0) [![Download](https://img.shields.io/maven-central/v/dev.icerock.moko/socket-io) ](https://repo1.maven.org/maven2/dev/icerock/moko/socket-io) ![kotlin-version](https://kotlin-version.aws.icerock.dev/kotlin-version?group=dev.icerock.moko&name=socket-io)
 
 # Mobile Kotlin socket io
 This is a Kotlin MultiPlatform library that provides real-time, event-based communication for iOS and Android.
@@ -36,8 +36,7 @@ allprojects {
 ### project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:socket-io:0.3.0")
-    commonMainApi("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+    commonMainApi("dev.icerock.moko:socket-io:0.4.0")
 }
 ```
 
@@ -60,7 +59,7 @@ kotlin {
         // add native dependency
         pod(name = "mokoSocketIo") {
             source = git(url = "https://github.com/icerockdev/moko-socket-io.git") {
-                tag = "release/0.3.0"
+                tag = "release/0.4.0"
             }
         }
     }
@@ -85,7 +84,7 @@ cocoaPods {
 
 Podfile
 ```ruby
-pod 'mokoSocketIo', :git => 'https://github.com/icerockdev/moko-socket-io.git', :tag => 'release/0.3.0'
+pod 'mokoSocketIo', :git => 'https://github.com/icerockdev/moko-socket-io.git', :tag => 'release/0.4.0'
 ```
 
 ## Usage

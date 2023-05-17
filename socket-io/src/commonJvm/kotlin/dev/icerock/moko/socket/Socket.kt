@@ -33,12 +33,8 @@ actual class Socket actual constructor(
             query = config?.queryParams?.run {
                 if (size == 0) return@run null
 
-                var result = ""
-                forEach { (key, value) ->
-                    result += "$key=$value"
-                }
-
-                result
+                val params: List<String> = map { (key, value) -> "$key=$value" }
+                params.joinToString("&")
             }
         })
 
