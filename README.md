@@ -24,7 +24,7 @@ This is a Kotlin MultiPlatform library that provides real-time, event-based comm
 - iOS version 11.0+
 
 ## Installation
-root build.gradle  
+### root build.gradle  
 ```groovy
 allprojects {
     repositories {
@@ -33,12 +33,47 @@ allprojects {
 }
 ```
 
-project build.gradle
+### project build.gradle
 ```groovy
 dependencies {
-    commonMainApi("dev.icerock.moko:socket-io:0.3.0")
-    commonMainApi("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+    commonMainApi("dev.icerock.moko:socket-io:0.4.0")
 }
+```
+
+#### With JetBrains cocoapods plugin
+project build.gradle
+```
+plugins {
+    kotlin("native.cocoapods")
+}
+
+...
+
+kotlin {
+    cocoapods {
+        ...
+
+        // 11.0 minimal supported
+        ios.deploymentTarget = "11.0"
+        
+        // add native dependency
+        pod(name = "mokoSocketIo") {
+            source = git(url = "https://github.com/icerockdev/moko-socket-io.git") {
+                tag = "release/0.4.0"
+            }
+        }
+    }
+}
+```
+
+#### With IceRock cocoapods plugin
+project build.gradle
+```
+plugins {
+    id("dev.icerock.mobile.multiplatform.cocoapods")
+}
+
+...
 
 cocoaPods {
     podsProject = file("../ios-app/Pods/Pods.xcodeproj") // here should be path to Pods xcode project
@@ -49,7 +84,7 @@ cocoaPods {
 
 Podfile
 ```ruby
-pod 'mokoSocketIo', :git => 'https://github.com/icerockdev/moko-socket-io.git', :tag => 'release/0.3.0'
+pod 'mokoSocketIo', :git => 'https://github.com/icerockdev/moko-socket-io.git', :tag => 'release/0.4.0'
 ```
 
 ## Usage

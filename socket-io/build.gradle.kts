@@ -3,7 +3,6 @@
  */
 
 import java.util.Base64
-import kotlin.text.String
 
 plugins {
     id("com.android.library")
@@ -23,6 +22,7 @@ kotlin {
         publishLibraryVariants("release", "debug")
     }
     ios()
+    iosSimulatorArm64()
     jvm()
 
     sourceSets {
@@ -39,11 +39,16 @@ kotlin {
         val jvmMain by getting {
             dependsOn(commonJvm)
         }
+
+        val iosMain by getting
+        val iosSimulatorArm64Main by getting {
+            dependsOn(iosMain)
+        }
     }
 }
 
 dependencies {
-    commonMainImplementation(libs.serialization)
+    commonMainApi(libs.serialization)
     "androidMainImplementation"(libs.appCompat)
     "commonJvmImplementation"(libs.socketIo) {
         exclude(group = "org.json", module = "json")
