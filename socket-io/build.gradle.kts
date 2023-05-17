@@ -24,6 +24,7 @@ kotlin {
     }
     ios()
     jvm()
+    iosSimulatorArm64()
 
     sourceSets {
         val commonMain by getting
@@ -38,6 +39,12 @@ kotlin {
 
         val jvmMain by getting {
             dependsOn(commonJvm)
+        }
+
+        val iosSimulatorArm64Main by getting
+
+        val iosMain by getting {
+            iosSimulatorArm64Main.dependsOn(this)
         }
     }
 }
