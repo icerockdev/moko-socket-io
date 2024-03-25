@@ -11,13 +11,17 @@ plugins {
 }
 
 kotlin {
-    android()
+    jvmToolchain(11)
+    androidTarget()
     ios()
 }
 
 dependencies {
     commonMainImplementation(libs.serialization)
     commonMainApi(projects.socketIo)
+}
+android {
+    namespace = "com.icerockdev.library"
 }
 
 framework {
