@@ -11,15 +11,13 @@ Pod::Spec.new do |spec|
   spec.libraries                = "c++"
   spec.module_name              = "#{spec.name}_umbrella"
 
-  spec.ios.deployment_target = '11.0'
-  spec.osx.deployment_target = '10.6'
+  spec.ios.deployment_target  = '11.0'
 
   spec.pod_target_xcconfig = {
       'KOTLIN_FRAMEWORK_BUILD_TYPE[config=*ebug]' => 'debug',
       'KOTLIN_FRAMEWORK_BUILD_TYPE[config=*elease]' => 'release',
       'CURENT_SDK[sdk=iphoneos*]' => 'iphoneos',
       'CURENT_SDK[sdk=iphonesimulator*]' => 'iphonesimulator',
-      'CURENT_SDK[sdk=macosx*]' => 'macos'
   }
 
   spec.script_phases = [
@@ -37,15 +35,8 @@ fi
 if [ "$CURENT_SDK" == "iphoneos" ]; then
 TARGET="Ios"
 ARCH="Arm64"
-elif [ "$CURENT_SDK" == "macos" ]; then
-TARGET="Macos"
-if [ "$NATIVE_ARCH" == "arm64" ]; then
-  ARCH="Arm64"
 else
-  ARCH="X64"
-fi
-else
-if [ "$NATIVE_ARCH" == "arm64" ]; then
+if [ "$ARCHS" == "arm64" ]; then
   TARGET="IosSimulator"
   ARCH="Arm64"
 else
