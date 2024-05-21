@@ -1,39 +1,55 @@
 Pod::Spec.new do |spec|
-    spec.name                     = 'MultiPlatformLibrary'
-    spec.version                  = '0.2.0'
-    spec.homepage                 = 'Link to a Kotlin/Native module homepage'
-    spec.source                   = { :git => "Not Published", :tag => "Cocoapods/#{spec.name}/#{spec.version}" }
-    spec.authors                  = 'IceRock Development'
-    spec.license                  = ''
-    spec.summary                  = 'Shared code between iOS and Android'
+  spec.name                     = 'MultiPlatformLibrary'
+  spec.version                  = '0.1.0'
+  spec.homepage                 = 'Link to a Kotlin/Native module homepage'
+  spec.source                   = { :git => "Not Published", :tag => "Cocoapods/#{spec.name}/#{spec.version}" }
+  spec.authors                  = 'IceRock Development'
+  spec.license                  = ''
+  spec.summary                  = 'Shared code between iOS and Android'
 
-    spec.vendored_frameworks      = "build/cocoapods/framework/#{spec.name}.framework"
-    spec.libraries                = "c++"
-    spec.module_name              = "#{spec.name}_umbrella"
+  spec.vendored_frameworks      = "build/cocoapods/framework/#{spec.name}.framework"
+  spec.libraries                = "c++"
+  spec.module_name              = "#{spec.name}_umbrella"
 
-#     spec.static_framework = true
-    spec.pod_target_xcconfig = {
-        'MPP_LIBRARY_NAME' => 'MultiPlatformLibrary',
-        'GRADLE_TASK[sdk=iphonesimulator*][config=*ebug]' => 'syncMultiPlatformLibraryDebugFrameworkIosX64',
-        'GRADLE_TASK[sdk=iphonesimulator*][config=*elease]' => 'syncMultiPlatformLibraryReleaseFrameworkIosX64',
-        'GRADLE_TASK[sdk=iphoneos*][config=*ebug]' => 'syncMultiPlatformLibraryDebugFrameworkIosArm64',
-        'GRADLE_TASK[sdk=iphoneos*][config=*elease]' => 'syncMultiPlatformLibraryReleaseFrameworkIosArm64'
-    }
+  spec.ios.deployment_target  = '11.0'
 
-    spec.script_phases = [
-        {
-            :name => 'Compile Kotlin/Native',
-            :execution_position => :before_compile,
-            :shell_path => '/bin/sh',
-            #:output_files => ['$TARGET_BUILD_DIR/$PRODUCT_NAME.framework/$PRODUCT_NAME'],
-            :script => <<-SCRIPT
+  spec.pod_target_xcconfig = {
+      'KOTLIN_FRAMEWORK_BUILD_TYPE[config=*ebug]' => 'debug',
+      'KOTLIN_FRAMEWORK_BUILD_TYPE[config=*elease]' => 'release',
+      'CURENT_SDK[sdk=iphoneos*]' => 'iphoneos',
+      'CURENT_SDK[sdk=iphonesimulator*]' => 'iphonesimulator',
+  }
+
+  spec.script_phases = [
+      {
+          :name => 'Compile Kotlin/Native',
+          :execution_position => :before_compile,
+          :shell_path => '/bin/sh',
+          :script => <<-SCRIPT
+if [ "$KOTLIN_FRAMEWORK_BUILD_TYPE" == "debug" ]; then
+CONFIG="Debug"
+else
+CONFIG="Release"
+fi
+
+if [ "$CURENT_SDK" == "iphoneos" ]; then
+TARGET="Ios"
+ARCH="Arm64"
+else
+if [ "$ARCHS" == "arm64" ]; then
+  TARGET="IosSimulator"
+  ARCH="Arm64"
+else
+  TARGET="Ios"
+  ARCH="X64"
+fi
+fi
+
 MPP_PROJECT_ROOT="$SRCROOT/../../mpp-library"
-
-MPP_OUTPUT_DIR="$MPP_PROJECT_ROOT/build/cocoapods/framework"
-MPP_OUTPUT_NAME="$MPP_OUTPUT_DIR/#{spec.name}.framework"
+GRADLE_TASK="syncMultiPlatformLibrary${CONFIG}Framework${TARGET}${ARCH}"
 
 "$MPP_PROJECT_ROOT/../gradlew" -p "$MPP_PROJECT_ROOT" "$GRADLE_TASK"
-            SCRIPT
-        }
-    ]
+          SCRIPT
+      }
+  ]
 end

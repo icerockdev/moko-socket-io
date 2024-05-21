@@ -65,6 +65,13 @@ kotlin {
     }
 }
 ```
+Podfile
+```
+pod 'mokoSocketIo', :git => 'https://github.com/icerockdev/moko-socket-io.git', :tag => 'release/0.4.0'
+```
+
+(!) Check sample - https://github.com/Alex009/moko-socket-io-sample ([integration changes](https://github.com/Alex009/moko-socket-io-sample/commit/7439093217f9c041369540011d84d7109b2c1606))
+
 
 #### With IceRock cocoapods plugin
 project build.gradle

@@ -4,7 +4,7 @@ source 'https://cdn.cocoapods.org/'
 inhibit_all_warnings!
 
 use_frameworks!
-platform :ios, '11.0'
+platform :ios, '12.0'
 
 # workaround for https://github.com/CocoaPods/CocoaPods/issues/8073
 # need for correct invalidate of cache MultiPlatformLibrary.framework
@@ -14,4 +14,12 @@ target 'TestProj' do
   pod 'MultiPlatformLibrary', :path => '../mpp-library'
 
   pod 'mokoSocketIo', :path => '../../'
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+    end
+  end
 end

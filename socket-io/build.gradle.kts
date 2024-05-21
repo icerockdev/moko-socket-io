@@ -18,7 +18,8 @@ group = "dev.icerock.moko"
 version = libs.versions.mokoSocketIoVersion.get()
 
 kotlin {
-    android {
+    jvmToolchain(11)
+    androidTarget {
         publishLibraryVariants("release", "debug")
     }
     ios()
@@ -54,6 +55,9 @@ dependencies {
         exclude(group = "org.json", module = "json")
     }
     "jvmMainImplementation"(libs.socketIo)
+}
+android {
+    namespace = "dev.icerock.moko.socket"
 }
 
 val javadocJar by tasks.registering(Jar::class) {
