@@ -1,7 +1,7 @@
 PODS:
-  - mokoSocketIo (0.3.0):
+  - mokoSocketIo (0.4.0):
     - Socket.IO-Client-Swift (~> 15.2.0)
-  - MultiPlatformLibrary (0.2.0)
+  - MultiPlatformLibrary (0.1.0)
   - Socket.IO-Client-Swift (15.2.0):
     - Starscream (~> 3.1)
   - Starscream (3.1.1)
@@ -22,11 +22,11 @@ EXTERNAL SOURCES:
     :path: "../mpp-library"
 
 SPEC CHECKSUMS:
-  mokoSocketIo: 6797ac07932163d18d3e3199b9510ee6dc332855
-  MultiPlatformLibrary: 4486066052a483da309067ef9dab1731ca41d66f
+  mokoSocketIo: 072c66dcab984f441fefe68db0b50f7a5215f15e
+  MultiPlatformLibrary: 0d485022d14547e165b3ea4eba82ded30ca025ba
   Socket.IO-Client-Swift: 1e3e3a1f09f3312a167f0d781eb2f383d477357c
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
 
-PODFILE CHECKSUM: f881c83f3f3582ddcc6b0f6d9bb6323f43a7082a
+PODFILE CHECKSUM: 5682fe9e7448b6ddb916ea4352d5f790dbd059af
 
-COCOAPODS: 1.12.1
+COCOAPODS: 1.15.2

@@ -8,20 +8,17 @@ plugins {
 }
 
 android {
-    compileSdkVersion(libs.versions.compileSdk.get().toInt())
-
-    dexOptions {
-        javaMaxHeapSize = "2g"
-    }
+    compileSdk = libs.versions.compileSdk.get().toInt()
+    namespace = "com.icerockdev"
 
     defaultConfig {
-        minSdkVersion(libs.versions.minSdk.get().toInt())
-        targetSdkVersion(libs.versions.targetSdk.get().toInt())
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
 
         applicationId = "dev.icerock.moko.samples.socketio"
 
         versionCode = 1
-        versionName = "0.2.0"
+        versionName = "0.3.1"
 
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -38,8 +35,19 @@ android {
         }
     }
 
-    packagingOptions {
-        exclude("META-INF/*.kotlin_module")
+    compileOptions {
+        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlin {
+        jvmToolchain(11)
+    }
+
+    packaging {
+        resources {
+            excludes += "META-INF/*.kotlin_module"
+        }
     }
 }
 

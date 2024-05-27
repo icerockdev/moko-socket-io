@@ -10,10 +10,10 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.15.0")
-        classpath("dev.icerock:mobile-multiplatform:0.14.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.10")
-        classpath("com.android.tools.build:gradle:7.4.2")
+        classpath(libs.detekt.gradle.plugin)
+        classpath(libs.mobile.multiplatform)
+        classpath(libs.kotlin.gradle.plugin)
+        classpath(libs.gradle)
     }
 }
 
@@ -21,7 +21,12 @@ allprojects {
     apply(plugin = "io.gitlab.arturbosch.detekt")
 
     configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
-        input.setFrom("src/commonMain/kotlin", "src/androidMain/kotlin", "src/iosMain/kotlin", "src/commonJvm/kotlin")
+        input.setFrom(
+            "src/commonMain/kotlin",
+            "src/androidMain/kotlin",
+            "src/iosMain/kotlin",
+            "src/commonJvm/kotlin"
+        )
     }
 
     dependencies {
@@ -30,11 +35,11 @@ allprojects {
 
     plugins.withId("com.android.library") {
         configure<com.android.build.gradle.LibraryExtension> {
-            compileSdkVersion(libs.versions.compileSdk.get().toInt())
+            compileSdk = libs.versions.compileSdk.get().toInt()
 
             defaultConfig {
-                minSdkVersion(libs.versions.minSdk.get().toInt())
-                targetSdkVersion(libs.versions.targetSdk.get().toInt())
+                minSdk = libs.versions.minSdk.get().toInt()
+                testOptions.targetSdk = libs.versions.targetSdk.get().toInt()
             }
         }
     }
@@ -42,5 +47,5 @@ allprojects {
 
 tasks.register("clean", Delete::class).configure {
     group = "build"
-    delete(rootProject.buildDir)
+    delete(layout.buildDirectory)
 }
