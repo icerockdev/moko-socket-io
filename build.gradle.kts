@@ -43,6 +43,11 @@ allprojects {
             }
         }
     }
+
+    val signingTasks = tasks.withType<Sign>()
+    tasks.withType<AbstractPublishToMaven>().configureEach {
+        dependsOn(signingTasks)
+    }
 }
 
 tasks.register("clean", Delete::class).configure {
