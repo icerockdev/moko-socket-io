@@ -6,7 +6,6 @@ package dev.icerock.moko.socket
 
 import io.socket.client.Socket
 
-
 actual sealed class SocketEvent<T> : Mapper<T> {
     actual object Connect : SocketEvent<Unit>(), Mapper<Unit> by UnitMapper() {
         override val socketIoEvents: List<String> = listOf(Socket.EVENT_CONNECT)
