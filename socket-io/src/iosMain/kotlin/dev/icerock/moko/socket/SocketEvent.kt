@@ -13,8 +13,10 @@ import cocoapods.mokoSocketIo.SocketEventPing
 import cocoapods.mokoSocketIo.SocketEventPong
 import cocoapods.mokoSocketIo.SocketEventReconnect
 import cocoapods.mokoSocketIo.SocketEventReconnectAttempt
+import kotlinx.cinterop.ExperimentalForeignApi
 import cocoapods.mokoSocketIo.SocketEvent as SocketIoEvent
 
+@OptIn(ExperimentalForeignApi::class)
 actual sealed class SocketEvent<T> : Mapper<T> {
     actual object Connect : SocketEvent<Unit>(), Mapper<Unit> by UnitMapper() {
         override val platformEvent: SocketIoEvent = SocketEventConnect

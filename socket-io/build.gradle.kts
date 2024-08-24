@@ -2,6 +2,7 @@
  * Copyright 2020 IceRock MAG Inc. Use of this source code is governed by the Apache 2.0 license.
  */
 
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 import java.util.Base64
 
 plugins {
@@ -44,6 +45,14 @@ kotlin {
         val iosMain by getting
         val iosSimulatorArm64Main by getting {
             dependsOn(iosMain)
+        }
+    }
+
+    targets.withType<KotlinNativeTarget>().configureEach {
+        compilations.configureEach {
+            cinterops.configureEach {
+                extraOpts("-compiler-option", "-fmodules")
+            }
         }
     }
 }
