@@ -8,9 +8,11 @@ import cocoapods.mokoSocketIo.SocketIo
 import cocoapods.mokoSocketIo.SocketIoTransportPolling
 import cocoapods.mokoSocketIo.SocketIoTransportUndefined
 import cocoapods.mokoSocketIo.SocketIoTransportWebsocket
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 
+@OptIn(ExperimentalForeignApi::class)
 actual class Socket actual constructor(
     endpoint: String,
     config: SocketOptions?,
