@@ -1,7 +1,7 @@
 [versions]
 detektVersion = "1.15.0"
 androidAppCompatVersion = "1.6.1"
-androidSocketIoVersion = "2.1.0"
+androidSocketIoVersion = "2.1.1"
 gradleVersion = "8.2.2"
 kotlinGradlePluginVersion = "1.9.10"
 kotlinxSerializationVersion = "1.7.0"
